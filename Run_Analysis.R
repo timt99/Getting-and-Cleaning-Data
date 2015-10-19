@@ -70,7 +70,7 @@ alldata <- cbind(subject_dataset, x_dataset, y_dataset)
 
 ##write.table(alldata, file= file, row.names=FALSE, col.names = TRUE, sep="\t", quote= FALSE)
 
-averagesData <- ddply(alldata, c("subject", "activity"), function(x) colMeans(x[, 1:66]))
+averagesData <- ddply(alldata, c("subject", "activity"), function(x) colMeans(x[, 1:70]))
 
 
 write.table(averagesData, file="averageData.txt", row.name= FALSE, col.names = TRUE, sep="\t", quote= FALSE )
