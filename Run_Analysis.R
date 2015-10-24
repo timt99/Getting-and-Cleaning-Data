@@ -23,7 +23,9 @@ subjectTest <- read.table("UCI HAR Dataset/test/subject_test.txt")
 
 x_dataset <- rbind(x_traindata, x_testdata)
 
+
 y_dataset <- rbind(y_traindata, y_testdata)
+
 
 subject_dataset <- rbind(subjectTrain, subjectTest)
 
@@ -35,15 +37,20 @@ subject_dataset <- rbind(subjectTrain, subjectTest)
 features <- read.table("UCI HAR Dataset/features.txt")
 
 #Get only columns with mean or std in their names
+
+
 featuresMeanStd <- grep(".*mean.*|.*std.*", features[,2])
+
 
 #subset the desired columns
 
 x_dataset <- x_dataset[, featuresMeanStd]
 
 
+
 #correct the column names
 names(x_dataset) <- features[featuresMeanStd,2]
+
 
 #Step 3 
 #Use descriptive activity names to name the activities in the data set
@@ -70,10 +77,10 @@ alldata <- cbind(subject_dataset, x_dataset, y_dataset)
 
 ##write.table(alldata, file= file, row.names=FALSE, col.names = TRUE, sep="\t", quote= FALSE)
 
-averagesData <- ddply(alldata, c("subject", "activity"), function(x) colMeans(x[, 1:70]))
+averagesData <- ddply(alldata, c("subject", "activity"), function(x) colMeans(x[, 1:80]))
 
 
-write.table(averagesData, file="averageData.txt", row.name= FALSE, col.names = TRUE, sep="\t", quote= FALSE )
+write.table(averagesData, file="average_Data.txt", row.name= FALSE, col.names = TRUE, sep="\t", quote= FALSE )
 
 
 
